@@ -31,10 +31,6 @@ public class Log_In extends JFrame
     private ImageIcon logo,display_picture,login_button_icon;
     
     
-    private Cursor crsr = new Cursor(Cursor.HAND_CURSOR);
-    
-    
-    
     Log_In()
     {  
         setFrame();
@@ -66,9 +62,7 @@ public class Log_In extends JFrame
     {
         logo = new ImageIcon(this.getClass().getResource("/Pictures/shopping-cart.png"));
         this.setIconImage(logo.getImage());
-        
-        
-        
+       
         login_button_icon = new ImageIcon(this.getClass().getResource("/Pictures/login_button_icon.png"));
         display_picture = new ImageIcon(this.getClass().getResource("/Pictures/display_picture.png"));
 
@@ -92,7 +86,6 @@ public class Log_In extends JFrame
         picture_panel.setBackground(Color.white);
         container.add(picture_panel);
         
-
         component_panel = new JPanel();
         component_panel.setBounds(500, 20, 275, 370);
         component_panel.setLayout(grid_layout);
@@ -106,8 +99,6 @@ public class Log_In extends JFrame
     {
         picture_label = new JLabel(display_picture);
         picture_panel.add(picture_label);
-    
-   
     }
     
     
@@ -165,6 +156,7 @@ public class Log_In extends JFrame
         
         login_button = new JButton(login_button_icon);
         login_button.setBorder(null);
+        login_button.setCursor(new Cursor(Cursor.HAND_CURSOR));
         login_button.setBackground(Color.white);
         component_panel.add(login_button);   
     }
@@ -172,7 +164,26 @@ public class Log_In extends JFrame
     
     public void setActionListeners()
     {
+        login_button.addActionListener(new ActionListener(){
         
+            public void actionPerformed(ActionEvent e)
+            {
+                if("Prosanto".equals(username_textfield.getText())&&"1234".equals(password_field.getText()))
+                {
+                    dispose();
+                    Home frame = new Home();
+                    frame.setVisible(true);
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Please enter valid username and password");
+                    System.out.println(""+username_textfield.getText());
+                }
+            
+            }
+        
+        
+        });
         
         
         

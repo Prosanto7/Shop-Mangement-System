@@ -5,157 +5,177 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import static javax.swing.BorderFactory.createMatteBorder;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 
 public class Log_In extends JFrame
 {  
-    private Container c;
-    private JLabel userlabel,passwordlabel;
-    private JTextField usertextfield;
-    private JPasswordField passwordfield;
-    private JButton submit,clear;
-    private ImageIcon logo;
+    private Container container;
+    private JPanel picture_panel,component_panel;
+    private JLabel picture_label,header_label,username_label,password_label,null_label;
+    private JTextField username_textfield;
+    private JPasswordField password_field;
+    private JButton login_button;
+    private GridLayout grid_layout;
+    private ImageIcon logo,display_picture,login_button_icon;
     
-    private Font f = new Font("Times New Roman",Font.BOLD,16);
+    
     private Cursor crsr = new Cursor(Cursor.HAND_CURSOR);
     
     
     
     Log_In()
     {  
-        Frame();
-        container();
-        frame_logo();
-        Label();
-        TextField();
-        Button();
-        Action_Listener();
+        setFrame();
+        setContainer();
+        setIcons();
+        setLayouts();
+        setPanels();
+        setPicturePanel();
+        setComponetPanel();
+        setActionListeners();
     }
     
-    public void Frame()
+    public void setFrame()
     {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(250,100,500,500);
+        this.setSize(900, 500);
+        this.setLocationRelativeTo(null);
         setTitle("SHOP MANAGEMENT SYSTEM");
     }
-        
-    public void container()
-    {
-         c = this.getContentPane();
-         c.setLayout(null);
-         c.setBackground(Color.LIGHT_GRAY);
-    }
     
-    public void frame_logo()
+    public void setContainer()
     {
-        logo = new ImageIcon(this.getClass().getResource("shopping-cart.png"));
+         container = this.getContentPane();
+         container.setLayout(null);
+         container.setBackground(Color.white);
+    }
+      
+    public void setIcons()
+    {
+        logo = new ImageIcon(this.getClass().getResource("/Pictures/shopping-cart.png"));
         this.setIconImage(logo.getImage());
+        
+        
+        
+        login_button_icon = new ImageIcon(this.getClass().getResource("/Pictures/login_button_icon.png"));
+        display_picture = new ImageIcon(this.getClass().getResource("/Pictures/display_picture.png"));
+
+        
     }
     
-    public void Label()
+    public void setLayouts()
     {
-        userlabel = new JLabel("Enter Your Username");
-        userlabel.setBounds(20, 100, 200, 40);
-        userlabel.setFont(f);
-        userlabel.setOpaque(true);
-        userlabel.setBackground(Color.BLACK);
-        userlabel.setForeground(Color.WHITE);
-        userlabel.setHorizontalAlignment(JLabel.CENTER);
-        c.add(userlabel);
+        grid_layout = new GridLayout();
+        grid_layout.setRows(11);
         
-        passwordlabel = new JLabel("Enter Your Password");
-        passwordlabel.setBounds(20, 150, 200, 40);
-        passwordlabel.setFont(f);
-        passwordlabel.setOpaque(true);
-        passwordlabel.setBackground(Color.BLACK);
-        passwordlabel.setForeground(Color.WHITE);
-        passwordlabel.setHorizontalAlignment(JLabel.CENTER);
-        c.add(passwordlabel);
-    }
-    
-    public void TextField()
-    {
-        usertextfield = new JTextField();
-        usertextfield.setBounds(250, 100, 200, 40);
-        usertextfield.setFont(f);
-        usertextfield.setHorizontalAlignment(JLabel.CENTER);
-        c.add(usertextfield);
-        
-        passwordfield = new JPasswordField();
-        passwordfield.setBounds(250, 150, 200, 40);
-        passwordfield.setHorizontalAlignment(JLabel.CENTER);
-        c.add(passwordfield);
-    }
-    
-    public void Button()
-    {
-        submit = new JButton("SUBMIT");
-        submit.setBounds(250,210,100,50);
-        submit.setFont(f);
-        submit.setBackground(Color.DARK_GRAY);
-        submit.setForeground(Color.WHITE);
-        submit.setCursor(crsr);
-        c.add(submit);
-        
-        
-        clear = new JButton("CLEAR");
-        clear.setBounds(120,210,100,50);
-        clear.setFont(f);
-        clear.setBackground(Color.DARK_GRAY);
-        clear.setForeground(Color.WHITE);
-        clear.setCursor(crsr);
-        c.add(clear);
     
     }
     
-    public void Action_Listener()
-    {
-        submit.addActionListener(new ActionListener()
-        {  
-            public void actionPerformed(ActionEvent e)
-            {   
-                String s1 = usertextfield.getText();
-                String s2 = passwordfield.getText();
-                 if(s1.isEmpty()||s2.isEmpty())
-                 {
-                    JOptionPane.showMessageDialog(null, "Please Inter All Values","ERROR",JOptionPane.ERROR_MESSAGE);
-                 }
-                 else
-                 {
-                    if("prosanto".equals(s1)&&"123".equals(s2))
-                    {
-                         dispose();
-                         Home frame = new Home();
-                         frame.setVisible(true);   
-                    }
-                    else
-                    {
-                        JOptionPane.showMessageDialog(null, "Wrong Value","ERROR",JOptionPane.ERROR_MESSAGE);
-                    }
-                 }
-            }
-        });
-        
-        
-        clear.addActionListener(new ActionListener()
-        {
-        
-            public void actionPerformed(ActionEvent e)
-            {
-                usertextfield.setText("");
-                passwordfield.setText("");
-            }
-        });
     
+    
+    public void setPanels()
+    {
+        picture_panel = new JPanel();
+        picture_panel.setBounds(90, 80, 320, 320);
+        picture_panel.setBackground(Color.white);
+        container.add(picture_panel);
+        
+
+        component_panel = new JPanel();
+        component_panel.setBounds(500, 20, 275, 370);
+        component_panel.setLayout(grid_layout);
+        component_panel.setBackground(Color.white);
+        container.add(component_panel);
+    
+    }
+    
+
+    public void setPicturePanel()
+    {
+        picture_label = new JLabel(display_picture);
+        picture_panel.add(picture_label);
+    
+   
+    }
+    
+    
+    
+    
+    
+    public void setComponetPanel()
+    {
+        header_label = new JLabel("User Login");
+        header_label.setHorizontalAlignment(JLabel.CENTER);
+        header_label.setFont(new Font("Arial",Font.BOLD,30));
+        component_panel.add(header_label);
+        
+        
+        null_label = new JLabel();
+        component_panel.add(null_label);
+        null_label = new JLabel();
+        component_panel.add(null_label);
+        
+        
+        username_label = new JLabel("Username");
+        username_label.setForeground(Color.GRAY);
+        username_label.setFont(new Font("Arial",Font.BOLD,20));
+        component_panel.add(username_label);
+        
+        
+        username_textfield = new JTextField();
+        username_textfield.setFont(new Font("Arial",Font.BOLD,16));
+        username_textfield.setForeground(Color.black);
+        username_textfield.setBorder(createMatteBorder(0,0,2,0,Color.blue));
+        component_panel.add(username_textfield);
+        
+        
+        null_label = new JLabel();
+        component_panel.add(null_label);
+        
+        
+        password_label = new JLabel("Password");
+        password_label.setForeground(Color.GRAY);
+        password_label.setFont(new Font("Arial",Font.BOLD,20));
+        component_panel.add(password_label);
+        
+        
+        password_field = new JPasswordField();
+        password_field.setForeground(Color.black);
+        password_field.setBorder(createMatteBorder(0,0,2,0,Color.blue));
+        component_panel.add(password_field);
+        
+        
+        null_label = new JLabel();
+        component_panel.add(null_label);
+        null_label = new JLabel();
+        component_panel.add(null_label);
+        
+        
+        login_button = new JButton(login_button_icon);
+        login_button.setBorder(null);
+        login_button.setBackground(Color.white);
+        component_panel.add(login_button);   
+    }
+    
+    
+    public void setActionListeners()
+    {
+        
+        
+        
+        
     }
      
     public static void main(String[] args) 

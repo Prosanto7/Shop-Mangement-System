@@ -1,130 +1,202 @@
 
 package sms;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import static javax.swing.BorderFactory.createMatteBorder;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 
 public class Home extends JFrame
 {
-    private Container c;
-    private JButton Sales_Info,Purchase_Info,Log_Out;
-    private ImageIcon logo;
-    
-    private Font f = new Font("Times New Roman",Font.BOLD,16);
-    private Cursor crsr = new Cursor(Cursor.HAND_CURSOR);
-    
-    
+    private Container container;
+    private ImageIcon logo,shop_name_button_icon,create_sales_invoice_button_icon,create_purchase_invoice_button_icon,logout_button_icon,home_button_icon,daily_income_cost_button_icon,stock_check_button_icon,due_check_button_icon,staff_attendence_button_icon,settings_button_icon;
+    private JPanel horizontal_panel,vertical_panel;
+    private JButton shop_name_button,create_sales_invoice_button,create_purchase_invoice_button,logout_button,home_button,daily_income_cost_button,stock_check_button,due_check_button,staff_attendence_button,settings_button;
+    private Cursor hand_cursor = new Cursor(Cursor.HAND_CURSOR);
     
     Home()
     {  
-        Frame();
-        container();
-        frame_logo();
-        Button();
-        Action_Listener();
+        setFrame();
+        setContainer();
+        setIcons();
+        setPanels();
+        setButtons();
+        setActionListeners();
     }
     
-    public void Frame()
+    public void setFrame()
     {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(250,100,500,500);
-        setTitle("SHOP MANAGEMENT SYSTEM");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(880, 500);
+        this.setLocationRelativeTo(null);
+        this.setTitle("SHOP MANAGEMENT SYSTEM");
     }
         
-    public void container()
+    public void setContainer()
     {
-         c = this.getContentPane();
-         c.setLayout(null);
-         c.setBackground(Color.LIGHT_GRAY);
+        container = this.getContentPane();
+        container.setLayout(new BorderLayout());
+        container.setBackground(Color.white);
     }
     
-    public void frame_logo()
+    public void setIcons()
     {
-        logo = new ImageIcon(this.getClass().getResource("shopping-cart.png"));
+        logo = new ImageIcon(this.getClass().getResource("/Pictures/shopping-cart.png"));
         this.setIconImage(logo.getImage());
+        
+        shop_name_button_icon = new ImageIcon(this.getClass().getResource("/Pictures/shop_name_button_icon.png"));
+        create_sales_invoice_button_icon = new ImageIcon(this.getClass().getResource("/Pictures/create_sales_invoice_button_icon.png"));
+        create_purchase_invoice_button_icon = new ImageIcon(this.getClass().getResource("/Pictures/create_purchase_invoice_button_icon.png"));
+        logout_button_icon = new ImageIcon(this.getClass().getResource("/Pictures/logout_button_icon.png"));  
+        home_button_icon = new ImageIcon(this.getClass().getResource("/Pictures/home_button_icon.png"));
+        daily_income_cost_button_icon = new ImageIcon(this.getClass().getResource("/Pictures/daily_income_cost_button_icon.png"));
+        stock_check_button_icon = new ImageIcon(this.getClass().getResource("/Pictures/stock_check_button_icon.png"));
+        due_check_button_icon = new ImageIcon(this.getClass().getResource("/Pictures/due_check_button_icon.png"));
+        staff_attendence_button_icon = new ImageIcon(this.getClass().getResource("/Pictures/staff_attendence_button_icon.png"));
+        settings_button_icon = new ImageIcon(this.getClass().getResource("/Pictures/settings_button_icon.png"));
+    }   
+    
+    
+    public void setPanels()
+    {
+        horizontal_panel = new JPanel();
+        horizontal_panel.setLayout(new GridLayout(1,3));
+        horizontal_panel.setCursor(hand_cursor);
+        container.add(horizontal_panel,BorderLayout.NORTH);
+        
+        vertical_panel = new JPanel();
+        vertical_panel.setLayout(new GridLayout(6,1));
+        vertical_panel.setCursor(hand_cursor);
+        container.add(vertical_panel,BorderLayout.WEST);
+        
     }
     
     
-    public void Button()
+    public void setButtons()
     {
-        Purchase_Info = new JButton("PURCHASE INFORMATION");
-        Purchase_Info.setBounds(100,50,250,100);
-        Purchase_Info.setFont(f);
-        Purchase_Info.setBackground(Color.DARK_GRAY);
-        Purchase_Info.setForeground(Color.WHITE);
-        Purchase_Info.setCursor(crsr);
-        c.add(Purchase_Info);
+        shop_name_button = new JButton("Shop Name");
+        shop_name_button.setFont(new Font("Arial",Font.PLAIN,16));
+        shop_name_button.setBackground(Color.DARK_GRAY);
+        shop_name_button.setForeground(Color.WHITE);
+        shop_name_button.setFocusPainted(false);
+        horizontal_panel.add(shop_name_button);
         
         
-        Sales_Info = new JButton("SALES INFORMATION");
-        Sales_Info.setBounds(100,170,250,100);
-        Sales_Info.setFont(f);
-        Sales_Info.setBackground(Color.DARK_GRAY);
-        Sales_Info.setForeground(Color.WHITE);
-        Sales_Info.setCursor(crsr);
-        c.add(Sales_Info);
+        create_sales_invoice_button = new JButton("Create Sales Invoice");
+        create_sales_invoice_button.setFont(new Font("Arial",Font.PLAIN,16));
+        create_sales_invoice_button.setBackground(Color.DARK_GRAY);
+        create_sales_invoice_button.setForeground(Color.WHITE);
+        create_sales_invoice_button.setFocusPainted(false);
+        horizontal_panel.add(create_sales_invoice_button);
         
+      
+        create_purchase_invoice_button = new JButton("Create Purchase Invoice");
+        create_purchase_invoice_button.setFont(new Font("Arial",Font.PLAIN,16));
+        create_purchase_invoice_button.setBackground(Color.DARK_GRAY);
+        create_purchase_invoice_button.setForeground(Color.WHITE);
+        create_purchase_invoice_button.setFocusPainted(false);
+        horizontal_panel.add(create_purchase_invoice_button);
         
-        Log_Out = new JButton("LOG OUT");
-        Log_Out.setBounds(100,290,250,100);
-        Log_Out.setFont(f);
-        Log_Out.setBackground(Color.DARK_GRAY);
-        Log_Out.setForeground(Color.WHITE);
-        Log_Out.setCursor(crsr);
-        c.add(Log_Out);
     
+        logout_button = new JButton("Log Out");
+        logout_button.setFont(new Font("Arial",Font.PLAIN,16));
+        logout_button.setBackground(Color.DARK_GRAY);
+        logout_button.setForeground(Color.WHITE);
+        logout_button.setIcon(logout_button_icon);
+        logout_button.setFocusPainted(false);
+        horizontal_panel.add(logout_button);
+           
+ 
+        home_button = new JButton(" Home");
+        home_button.setFont(new Font("Arial",Font.BOLD,16));
+        home_button.setBackground(Color.LIGHT_GRAY);
+        home_button.setForeground(Color.BLACK);
+        home_button.setIcon(home_button_icon);
+        home_button.setFocusPainted(false);
+        vertical_panel.add(home_button);
+        
+   
+        daily_income_cost_button = new JButton(" Daily Income Cost ");
+        daily_income_cost_button.setFont(new Font("Arial",Font.PLAIN,16));
+        daily_income_cost_button.setBackground(Color.DARK_GRAY);
+        daily_income_cost_button.setForeground(Color.WHITE);
+        daily_income_cost_button.setIcon(daily_income_cost_button_icon);
+        daily_income_cost_button.setFocusPainted(false);
+        vertical_panel.add(daily_income_cost_button);
+        
+ 
+        stock_check_button = new JButton(" Stock Check");
+        stock_check_button.setFont(new Font("Arial",Font.PLAIN,16));
+        stock_check_button.setBackground(Color.DARK_GRAY);
+        stock_check_button.setForeground(Color.WHITE);
+        stock_check_button.setIcon(stock_check_button_icon);
+        stock_check_button.setFocusPainted(false);
+        vertical_panel.add(stock_check_button);
+        
+     
+        due_check_button = new JButton(" Due Check");
+        due_check_button.setFont(new Font("Arial",Font.PLAIN,16));
+        due_check_button.setBackground(Color.DARK_GRAY);
+        due_check_button.setForeground(Color.WHITE);
+        due_check_button.setIcon(due_check_button_icon);
+        due_check_button.setFocusPainted(false);
+        vertical_panel.add(due_check_button);
+       
+       
+        staff_attendence_button = new JButton(" Staff Attendence");
+        staff_attendence_button.setFont(new Font("Arial",Font.PLAIN,16));
+        staff_attendence_button.setBackground(Color.DARK_GRAY);
+        staff_attendence_button.setForeground(Color.WHITE);
+        staff_attendence_button.setIcon(staff_attendence_button_icon);
+        staff_attendence_button.setFocusPainted(false);
+        vertical_panel.add(staff_attendence_button);
+        
+     
+        settings_button = new JButton(" Settings");
+        settings_button.setFont(new Font("Arial",Font.PLAIN,16));
+        settings_button.setBackground(Color.DARK_GRAY);
+        settings_button.setForeground(Color.WHITE);
+        settings_button.setIcon(settings_button_icon);
+        settings_button.setFocusPainted(false);
+        vertical_panel.add(settings_button);      
     }
-    
-    public void Action_Listener()
+   
+    public void setActionListeners()
     {
-        Sales_Info.addActionListener(new ActionListener()
-        {  
+        create_sales_invoice_button.addActionListener(new ActionListener()
+        {     
             public void actionPerformed(ActionEvent e)
-            {   
+            {
                 dispose();
-                Sales_Information frame = new Sales_Information();
-                frame.setVisible(true);   
+                Create_Sales_Invoice frame = new Create_Sales_Invoice();
+                frame.setVisible(true);
             }
         });
         
         
-        Purchase_Info.addActionListener(new ActionListener()
-        {
-        
-            public void actionPerformed(ActionEvent e)
-            {
-                dispose();
-                Purchase_Information frame = new Purchase_Information();
-                frame.setVisible(true);  
-            } 
-        });
-        
-        Log_Out.addActionListener(new ActionListener()
-        {
-        
+        logout_button.addActionListener(new ActionListener()
+        {     
             public void actionPerformed(ActionEvent e)
             {
                 dispose();
                 Log_In frame = new Log_In();
-                frame.setVisible(true);  
-            } 
+                frame.setVisible(true);
+            }
         });
         
-        
-    
     }
     
-    
-    
-    
-    
+  
     public static void main(String[] args) 
     {
         Home frame= new Home();

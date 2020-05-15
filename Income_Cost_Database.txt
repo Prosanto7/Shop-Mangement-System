@@ -1,0 +1,31 @@
+00000,21/04/2020 Tue 09:04:09 AM,Income By Product Sale,65000
+00000,21/04/2020 Tue 09:05:19 AM,Income By Product Sale,42000
+XXXXX,21/04/2020 Tue 09:06:46 AM,Cost By Product Buy,8500
+XXXXX,21/04/2020 Tue 09:07:35 AM,Cost By Shop Rent,50000
+10003,21/04/2020 Tue 10:01:06 AM,Income By Customer Due Amount,1000
+10003,21/04/2020 Tue 10:03:12 AM,Income By Customer Due Amount,500
+20006,21/04/2020 Tue 10:03:12 AM,Cost By Company Due Amount,10000
+10003,21/04/2020 Tue 11:36:59 AM,Income By Customer Due Amount,100
+10004,21/04/2020 Tue 11:48:15 AM,Income By Customer Due Amount,1000
+20001,21/04/2020 Tue 11:51:16 AM,Cost By Company Due Amount,1000
+10001,21/04/2020 Tue 11:53:43 AM,Income By Customer Due Amount,500
+10003,21/04/2020 Tue 12:01:08 PM,Income By Customer Due Amount,200
+20004,21/04/2020 Tue 12:01:54 PM,Cost By Company Due Amount,20
+20006,21/04/2020 Tue 12:04:29 PM,Cost By Company Due Amount,3000
+20003,21/04/2020 Tue 12:06:21 PM,Cost By Company Due Amount,100
+10003,21/04/2020 Tue 12:18:08 PM,Income By Customer Due Amount,200
+10001,21/04/2020 Tue 12:19:36 PM,Income By Customer Due Amount,200
+10001,21/04/2020 Tue 12:27:04 PM,Income By Customer Due Amount,100
+10001,21/04/2020 Tue 12:27:04 PM,Income By Customer Due Amount,20
+20001,21/04/2020 Tue 12:29:55 PM,Cost By Company Due Amount,1000
+20001,21/04/2020 Tue 12:29:55 PM,Cost By Company Due Amount,1000
+20006,21/04/2020 Tue 01:05:25 PM,Cost By Company Due Amount,100
+20006,21/04/2020 Tue 01:06:38 PM,Cost By Company Due Amount,100
+20001,21/04/2020 Tue 01:16:12 PM,Cost By Company Due Amount,1000
+20001,21/04/2020 Tue 01:24:32 PM,Cost By Company Due Amount,100
+20006,21/04/2020 Tue 01:27:18 PM,Cost By Company Due Amount,100
+20001,21/04/2020 Tue 01:33:01 PM,Cost By Company Due Amount,100
+10001,21/04/2020 Tue 02:31:59 PM,Income By Customer Due Amount,180
+10004,21/04/2020 Tue 02:32:20 PM,Income By Customer Due Amount,500
+10004,22/04/2020 Wed 08:40:17 AM,Income By Customer Due Amount,100
+XXXXX,30/04/2020 Thu 10:02:08 AM,Cost By Staff Salary,2000
